@@ -18,7 +18,7 @@ const Parent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  background-color: #121212;
+  background-color: #0d162e;
   padding: 1.6rem 2.4rem;
   min-height: 100vh;
   position: absolute;
@@ -27,5 +27,4 @@ const Parent = styled.div`
   top: 10.1rem;
   left: 0;
   transition: min-height 4ms ease-in-out;
-  max-width: 50rem;
 `;
