@@ -11,6 +11,6 @@ html{
 }
 body{
     font-family: "Poppins", sans-serif; 
-    background-color: lightgray;
+
 }
 `;
