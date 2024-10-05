@@ -7,9 +7,10 @@ export const Global = createGlobalStyle`
     box-sizing: border-box;
 }
 html{
-    font-size: 52.5%;
+    font-size: 62.5%;
 }
 body{
     font-family: "Poppins", sans-serif; 
+    background-color: lightgray;
 }
 `;
