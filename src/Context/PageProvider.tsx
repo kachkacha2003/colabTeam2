@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 import { Itype } from "../types/ContextType";
 
 const statesContext = createContext<Itype>({
@@ -12,4 +12,8 @@ export default function PageProvider({ children }: { children: ReactNode }) {
       {children}
     </statesContext.Provider>
   );
+}
+export function Context() {
+  const context = useContext(statesContext);
+  return context;
 }
