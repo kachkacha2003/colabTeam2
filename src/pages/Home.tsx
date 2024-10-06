@@ -1,3 +1,6 @@
+
+import React from "react";
+import EventHubLogo from "/image/EventHubLogo.svg"
 import Header from "../components/Header";
 import IntroCon from "../components/forHome/IntroCon";
 import Seamless from "../components/forHome/Seamless";
