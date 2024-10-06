@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import PageProvider from "./Context/PageProvider";
 import { Global } from "./GlobalStyles";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 const router = createBrowserRouter([{ path: "/", element: <Home /> }]);
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
       <Header />
       <Global />
       <RouterProvider router={router} />
+      <Footer />
     </PageProvider>
   </StrictMode>
 );
