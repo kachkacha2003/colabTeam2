@@ -22,6 +22,7 @@ const RedButton = styled.button`
   font-weight: 600;
   border-radius: 2rem;
   padding: 1.5rem 1rem;
+  border: none;
 `;
 const BlueButton = styled.button`
   background-color: #32beed;
@@ -31,6 +32,7 @@ const BlueButton = styled.button`
   font-weight: 600;
   border-radius: 2rem;
   padding: 1.5rem 1rem;
+  border: none;
 `;
 const ButtonsCon = styled.div`
   display: flex;
