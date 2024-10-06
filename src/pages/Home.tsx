@@ -1,7 +1,8 @@
 import Header from "../components/Header";
 import IntroCon from "../components/forHome/IntroCon";
 import Seamless from "../components/forHome/Seamless";
-import Securiry from "../components/forHome/Securiry";
+import Security from "../components/forHome/Security";
+
 import UnlockPotential from "../components/forHome/UnlockPotential";
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
       <IntroCon />
       <UnlockPotential />
       <Seamless />
-      <Securiry />
+      <Security />
     </div>
   );
 }
