@@ -1,17 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-
-export default function Events(){
-    return(
-        <>
-        <Cont>
+export default function Events() {
+  return (
+    <>
+      <Cont>
         <h1>events</h1>
-        </Cont>
-        </>
-    )
+      </Cont>
+    </>
+  );
 }
 
 const Cont = styled.div`
-    padding: 20px;
-`
+  padding: 20px;
+`;
