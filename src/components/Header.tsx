@@ -4,6 +4,7 @@ import burger from "/icon-hamburger.svg";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState } from "react";
 import Burger from "./Burger";
+import { Link } from "react-router-dom";
 // import { Link, useNavigate } from "react-router-dom";
 export default function Header() {
   // const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function Header() {
         <SpanCon>
           <Para>Explore</Para>
           <Para>Login</Para>
-          {/* <Link to={"/SignUp"}>Signup</Link> */}
+          <Link to={"/SignUp"}>Signup</Link>
         </SpanCon>
       )}
       {burgerShow ? <Burger /> : null}
