@@ -17,6 +17,7 @@ import Notifications from "./pages/dashboard/Notifications";
 import RSVPs from "./pages/dashboard/RSVPs";
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
+import { Navigate } from "react-router-dom";
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   {
