@@ -8,16 +8,20 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { ISignUp } from "../../types/SignUp";
+import { useNavigate } from "react-router-dom";
+import { signUpScema } from "../../scema/SignUp";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function SignUp() {
   const [showchars, setShowChars] = useState<boolean>(false);
   const [showcharsR, setShowCharsR] = useState<boolean>(false);
   const bg = useMediaQuery("only screen and (min-width : 1000px)");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ISignUp>();
+  } = useForm<ISignUp>({ resolver: yupResolver(signUpScema) });
   const inputData: SubmitHandler<ISignUp> = (data) => console.log(data);
 
   return (
@@ -97,7 +101,7 @@ export default function SignUp() {
         </Form>
         <BottomCon>
           <AlreadyP>Already have an acount ?</AlreadyP>
-          <LoginSpan>Login</LoginSpan>
+          <LoginSpan onClick={() => navigate("/login")}>Login</LoginSpan>
         </BottomCon>
       </Parent>
       {bg ? <BigLogo src={bigLogo} alt="" /> : null}
