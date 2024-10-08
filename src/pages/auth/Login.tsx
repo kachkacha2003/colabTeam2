@@ -8,6 +8,8 @@ import { ILogin } from "../../types/Login";
 import bigLogo from "/image/EventHub+logo.png";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useNavigate } from "react-router-dom";
+import { loginScema } from "../../scema/Login";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Login() {
   const [hide, setHide] = useState(true);
@@ -17,7 +19,7 @@ export default function Login() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILogin>();
+  } = useForm<ILogin>({ resolver: yupResolver(loginScema) });
   const inputData: SubmitHandler<ILogin> = (data) => console.log(data);
   return (
     <Cover>
