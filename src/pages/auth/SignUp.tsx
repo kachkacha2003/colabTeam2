@@ -154,9 +154,6 @@ const Hiden = styled.img`
   top: 50%;
 `;
 const RpasswordInput = styled.input<{ showcharsR: boolean }>`
-  /* background-image: url(${(props) => (props.showchars ? hidden : shown)});
-  background-position: right 2rem top 50%;
-  background-repeat: no-repeat; */
   font-size: 16px;
   font-weight: 500;
   width: 100%;
@@ -172,9 +169,6 @@ const RpasswordInput = styled.input<{ showcharsR: boolean }>`
   }
 `;
 const PAsswordInput = styled.input<{ showchars: boolean }>`
-  /* background-image: url(${(props) => (props.showchars ? hidden : shown)});
-  background-position: right 2rem top 50%;
-  background-repeat: no-repeat; */
   font-size: 16px;
   font-weight: 500;
   width: 100%;
