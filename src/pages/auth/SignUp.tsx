@@ -4,10 +4,17 @@ import logo from "/image/EventHubLogo.svg";
 import hidden from "/inputhide.svg";
 import shown from "/inputShow.svg";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export default function SignUp() {
   const [showchars, setShowChars] = useState<boolean>(false);
   const [showcharsR, setShowCharsR] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   return (
     <Parent>
@@ -69,26 +76,42 @@ export default function SignUp() {
             />
           )}
         </InputsCon>
+        <Btn>Sign up</Btn>
       </Form>
-      {/* <Hiden src={hidden} alt="" />
-      <Shown src={shown} alt="" /> */}
+      <BottomCon>
+        <AlreadyP>Already have an acount ?</AlreadyP>
+        <LoginSpan>Login</LoginSpan>
+      </BottomCon>
     </Parent>
   );
 }
-// const Shownr = styled.img`
-//   position: absolute;
-//   width: 24px;
-//   height: 24px;
-//   right: 2rem;
-//   top: 50%;
-// `;
-// const Hidenr = styled.img`
-//   position: absolute;
-//   width: 24px;
-//   height: 24px;
-//   right: 2rem;
-//   top: 50%;
-// `;
+
+const LoginSpan = styled.p`
+  color: red;
+  font-size: 16px;
+  font-weight: 500;
+`;
+const AlreadyP = styled.p`
+  color: #121212;
+  font-size: 16px;
+  font-weight: 500;
+`;
+const BottomCon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`;
+const Btn = styled.button`
+  background-color: #121212;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  padding: 1.5rem;
+  width: 100%;
+  border: none;
+`;
 const Shown = styled.img`
   position: absolute;
   width: 24px;
@@ -184,7 +207,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 `;
 const LogoAndH1Con = styled.div`
   display: flex;
@@ -207,4 +230,5 @@ const Parent = styled.div`
   gap: 1.6rem;
   padding: 2.4rem;
   background-color: #f3f4f6;
+  min-height: 100vh;
 `;
