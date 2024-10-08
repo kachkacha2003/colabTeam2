@@ -1,88 +1,107 @@
 import styled from "styled-components";
 import icon from "/icon-previous.svg";
 import logo from "/image/EventHubLogo.svg";
+import bigLogo from "/image/EventHub+logo.png";
 import hidden from "/inputhide.svg";
 import shown from "/inputShow.svg";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useMediaQuery } from "@uidotdev/usehooks";
+import { ISignUp } from "../../types/SignUp";
 
 export default function SignUp() {
   const [showchars, setShowChars] = useState<boolean>(false);
   const [showcharsR, setShowCharsR] = useState<boolean>(false);
+  const bg = useMediaQuery("only screen and (min-width : 1000px)");
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<ISignUp>();
+  const inputData: SubmitHandler<ISignUp> = (data) => console.log(data);
 
   return (
-    <Parent>
-      <Icon src={icon} alt="" />
-      <LogoAndH1Con>
-        <img src={logo} alt="" />
-        <Hone>Create an account</Hone>
-      </LogoAndH1Con>
-      <Form>
-        <InputsCon>
-          <Label htmlFor="name">Name</Label>
-          <NameInput type="text" id="name" placeholder="John Doe" />
-        </InputsCon>
-        <InputsCon>
-          <Label htmlFor="email">Email</Label>
-          <EmailInput type="text" id="email" placeholder="example@gmail.com" />
-        </InputsCon>
-        <InputsCon>
-          <Label htmlFor="password">Password</Label>
-          <PAsswordInput
-            type={`${showchars ? "password" : "text"}`}
-            id="password"
-            showchars={showchars}
-            placeholder="Password"
-          />
-          {showchars ? (
-            <Hiden
-              src={hidden}
-              alt=""
-              onClick={() => setShowChars(!showchars)}
+    <Cover>
+      <Parent>
+        <Icon src={icon} alt="" />
+        <LogoAndH1Con>
+          <img src={logo} alt="" />
+          <Hone>Create an account</Hone>
+        </LogoAndH1Con>
+        <Form onSubmit={handleSubmit(inputData)}>
+          <InputsCon>
+            <Label htmlFor="name">Name</Label>
+            <NameInput
+              type="text"
+              id="name"
+              placeholder="John Doe"
+              {...register("name")}
             />
-          ) : (
-            <Shown
-              src={shown}
-              alt=""
-              onClick={() => setShowChars(!showchars)}
+          </InputsCon>
+          <InputsCon>
+            <Label htmlFor="email">Email</Label>
+            <EmailInput
+              type="text"
+              id="email"
+              placeholder="example@gmail.com"
+              {...register("email")}
             />
-          )}
-        </InputsCon>
-        <InputsCon>
-          <Label htmlFor="Rpassword">Confirm Password</Label>
-          <RpasswordInput
-            type={`${showcharsR ? "password" : "text"}`}
-            id="Rpassword"
-            showcharsR={showcharsR}
-            placeholder="Repeat  Password"
-          />
-          {showcharsR ? (
-            <Hiden
-              src={hidden}
-              alt=""
-              onClick={() => setShowCharsR(!showcharsR)}
+          </InputsCon>
+          <InputsCon>
+            <Label htmlFor="password">Password</Label>
+            <PAsswordInput
+              type={`${showchars ? "password" : "text"}`}
+              id="password"
+              showchars={showchars}
+              placeholder="Password"
+              {...register("password")}
             />
-          ) : (
-            <Shown
-              src={shown}
-              alt=""
-              onClick={() => setShowCharsR(!showcharsR)}
+            {showchars ? (
+              <Hiden
+                src={hidden}
+                alt=""
+                onClick={() => setShowChars(!showchars)}
+              />
+            ) : (
+              <Shown
+                src={shown}
+                alt=""
+                onClick={() => setShowChars(!showchars)}
+              />
+            )}
+          </InputsCon>
+          <InputsCon>
+            <Label htmlFor="Rpassword">Confirm Password</Label>
+            <RpasswordInput
+              type={`${showcharsR ? "password" : "text"}`}
+              id="Rpassword"
+              showcharsR={showcharsR}
+              placeholder="Repeat  Password"
+              {...register("Rpassword")}
             />
-          )}
-        </InputsCon>
-        <Btn>Sign up</Btn>
-      </Form>
-      <BottomCon>
-        <AlreadyP>Already have an acount ?</AlreadyP>
-        <LoginSpan>Login</LoginSpan>
-      </BottomCon>
-    </Parent>
+            {showcharsR ? (
+              <Hiden
+                src={hidden}
+                alt=""
+                onClick={() => setShowCharsR(!showcharsR)}
+              />
+            ) : (
+              <Shown
+                src={shown}
+                alt=""
+                onClick={() => setShowCharsR(!showcharsR)}
+              />
+            )}
+          </InputsCon>
+          <Btn>Sign up</Btn>
+        </Form>
+        <BottomCon>
+          <AlreadyP>Already have an acount ?</AlreadyP>
+          <LoginSpan>Login</LoginSpan>
+        </BottomCon>
+      </Parent>
+      {bg ? <BigLogo src={bigLogo} alt="" /> : null}
+    </Cover>
   );
 }
 
@@ -90,6 +109,9 @@ const LoginSpan = styled.p`
   color: red;
   font-size: 16px;
   font-weight: 500;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const AlreadyP = styled.p`
   color: #121212;
@@ -111,6 +133,11 @@ const Btn = styled.button`
   padding: 1.5rem;
   width: 100%;
   border: none;
+  &:hover {
+    cursor: pointer;
+    color: orange;
+    background-color: green;
+  }
 `;
 const Shown = styled.img`
   position: absolute;
@@ -231,4 +258,16 @@ const Parent = styled.div`
   padding: 2.4rem;
   background-color: #f3f4f6;
   min-height: 100vh;
+  @media (min-width: 1000px) {
+    width: 50%;
+    gap: 5.4rem;
+  }
+`;
+const BigLogo = styled.img`
+  width: 50%;
+`;
+const Cover = styled.div`
+  @media (min-width: 1000px) {
+    display: flex;
+  }
 `;
