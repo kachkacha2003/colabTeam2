@@ -21,9 +21,9 @@ export default function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
+    // watch,
   } = useForm<ISignUp>({ resolver: yupResolver(signUpScema) });
   const inputData: SubmitHandler<ISignUp> = (data) => console.log(data);
-  console.log(errors);
 
   return (
     <Cover>
@@ -43,6 +43,7 @@ export default function SignUp() {
               {...register("name")}
               nameEror={errors?.name?.message}
             />
+            {errors.name?.message ? <ErorSpan>Min 5 symbol</ErorSpan> : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="email">Email</Label>
@@ -54,7 +55,7 @@ export default function SignUp() {
               emailEror={errors.email?.message}
             />
             {errors.email?.message ? (
-              <EmailErorSpan>Please enter valid email</EmailErorSpan>
+              <ErorSpan>Please enter valid email</ErorSpan>
             ) : null}
           </InputsCon>
           <InputsCon>
@@ -80,6 +81,9 @@ export default function SignUp() {
                 onClick={() => setShowChars(!showchars)}
               />
             )}
+            {errors.password?.message ? (
+              <ErorSpanpassword>Min 5 symbol</ErorSpanpassword>
+            ) : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="Rpassword">Confirm Password</Label>
@@ -104,6 +108,9 @@ export default function SignUp() {
                 onClick={() => setShowCharsR(!showcharsR)}
               />
             )}
+            {errors.Rpassword?.message ? (
+              <ErorSpanpassword>{errors.Rpassword.message}</ErorSpanpassword>
+            ) : null}
           </InputsCon>
           <Btn>Sign up</Btn>
         </Form>
@@ -116,7 +123,15 @@ export default function SignUp() {
     </Cover>
   );
 }
-const EmailErorSpan = styled.span`
+const ErorSpanpassword = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 6rem;
+  top: 60%;
+`;
+const ErorSpan = styled.span`
   color: red;
   font-size: 12px;
   font-weight: 500;
