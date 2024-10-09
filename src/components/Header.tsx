@@ -20,7 +20,7 @@ export default function Header() {
       ) : (
         <SpanCon>
           <Para>Explore</Para>
-          <Para>Login</Para>
+          <Para onClick={() => navigate("/login")}>Login</Para>
           <Para onClick={() => navigate("/signUp")}>Signup</Para>
         </SpanCon>
       )}
@@ -33,6 +33,9 @@ const Para = styled.p`
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const SpanCon = styled.div`
   display: flex;

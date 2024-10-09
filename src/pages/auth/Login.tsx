@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <Cover>
       <Parent>
-        <Icon src={icon} alt="" />
+        <Icon src={icon} alt="" onClick={() => navigate(-1)} />
         <InputsCon>
           <Hone>Sign In</Hone>
           <Form onSubmit={handleSubmit(inputData)}>
@@ -154,7 +154,7 @@ const Form = styled.form`
   align-items: center;
   gap: 1.5rem;
   @media (min-width: 1000px) {
-    gap: 4rem;
+    gap: 2rem;
   }
 `;
 const InputCon = styled.div`
@@ -194,5 +194,6 @@ const Parent = styled.div`
   min-height: 100vh;
   @media (min-width: 1000px) {
     width: 50%;
+    gap: 10rem;
   }
 `;

@@ -23,11 +23,12 @@ export default function SignUp() {
     formState: { errors },
   } = useForm<ISignUp>({ resolver: yupResolver(signUpScema) });
   const inputData: SubmitHandler<ISignUp> = (data) => console.log(data);
+  console.log(errors);
 
   return (
     <Cover>
       <Parent>
-        <Icon src={icon} alt="" />
+        <Icon src={icon} alt="" onClick={() => navigate(-1)} />
         <LogoAndH1Con>
           <img src={logo} alt="" />
           <Hone>Create an account</Hone>
@@ -40,6 +41,7 @@ export default function SignUp() {
               id="name"
               placeholder="John Doe"
               {...register("name")}
+              nameEror={errors?.name?.message}
             />
           </InputsCon>
           <InputsCon>
@@ -49,7 +51,11 @@ export default function SignUp() {
               id="email"
               placeholder="example@gmail.com"
               {...register("email")}
+              emailEror={errors.email?.message}
             />
+            {errors.email?.message ? (
+              <EmailErorSpan>Please enter valid email</EmailErorSpan>
+            ) : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="password">Password</Label>
@@ -59,6 +65,7 @@ export default function SignUp() {
               showchars={showchars}
               placeholder="Password"
               {...register("password")}
+              passwordEror={errors.password?.message}
             />
             {showchars ? (
               <Hiden
@@ -82,6 +89,7 @@ export default function SignUp() {
               showcharsR={showcharsR}
               placeholder="Repeat  Password"
               {...register("Rpassword")}
+              RpasswordEror={errors.Rpassword?.message}
             />
             {showcharsR ? (
               <Hiden
@@ -108,7 +116,14 @@ export default function SignUp() {
     </Cover>
   );
 }
-
+const EmailErorSpan = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 2rem;
+  top: 60%;
+`;
 const LoginSpan = styled.p`
   color: red;
   font-size: 16px;
@@ -157,13 +172,17 @@ const Hiden = styled.img`
   right: 2rem;
   top: 50%;
 `;
-const RpasswordInput = styled.input<{ showcharsR: boolean }>`
+const RpasswordInput = styled.input<{
+  showcharsR: boolean;
+  RpasswordEror: string | undefined;
+}>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.RpasswordEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -172,13 +191,17 @@ const RpasswordInput = styled.input<{ showcharsR: boolean }>`
     font-weight: 600;
   }
 `;
-const PAsswordInput = styled.input<{ showchars: boolean }>`
+const PAsswordInput = styled.input<{
+  showchars: boolean;
+  passwordEror: string | undefined;
+}>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.passwordEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -187,13 +210,14 @@ const PAsswordInput = styled.input<{ showchars: boolean }>`
     font-weight: 600;
   }
 `;
-const EmailInput = styled.input`
+const EmailInput = styled.input<{ emailEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.emailEror ? " 1px solid red" : "1px solid lightgray "};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -202,13 +226,14 @@ const EmailInput = styled.input`
     font-weight: 600;
   }
 `;
-const NameInput = styled.input`
+const NameInput = styled.input<{ nameEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.nameEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
