@@ -35,6 +35,7 @@ export default function Login() {
                 id="email"
                 placeholder="Email"
                 {...register("email")}
+                emailEror={errors.email?.message}
               />
               {errors.email?.message ? (
                 <ErorSpanpassword>{errors.email.message}</ErorSpanpassword>
@@ -47,6 +48,7 @@ export default function Login() {
                 id="password"
                 placeholder="Password"
                 {...register("password")}
+                passwordEror={errors.password?.message}
               />
               {hide ? (
                 <Hiden src={hidden} alt="" onClick={() => setHide(!hide)} />
@@ -128,13 +130,14 @@ const Hiden = styled.img`
   right: 2rem;
   top: 50%;
 `;
-const PasswordInput = styled.input`
+const PasswordInput = styled.input<{ passwordEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.passwordEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -143,13 +146,14 @@ const PasswordInput = styled.input`
     font-weight: 600;
   }
 `;
-const EmailInput = styled.input`
+const EmailInput = styled.input<{ emailEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.emailEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
