@@ -12,6 +12,8 @@ import Events from "./pages/dashboard/Events";
 import Invities from "./pages/dashboard/Invities";
 import Notifications from "./pages/dashboard/Notifications";
 import RSVPs from "./pages/dashboard/RSVPs";
+import Create from "./pages/dashboard/Create";
+
 
 const router = createBrowserRouter([
   
@@ -20,13 +22,13 @@ const router = createBrowserRouter([
   {path: "/", element: <Layot/>,
     children: [
       {path: "/dashboard", element: <Dashboard/>},
-      {path: "/events", element: <Events />},
-      {path: "/invities", element: <Invities />},
-      {path: "/RSVPs", element: <RSVPs />},
-      {path: "/notifications", element: <Notifications />}
+      {path: "events", element: <Events />},
+      {path: "invities", element: <Invities />},
+      {path: "RSVPs", element: <RSVPs />},
+      {path: "notifications", element: <Notifications />},
+      {path: "dashboard/create", element: <Create />},
     ]
   }
-  
 ]);
 
 createRoot(document.getElementById("root")!).render(

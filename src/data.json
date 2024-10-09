@@ -1,0 +1,90 @@
+{
+    "data": [
+        {
+            "categories": ["Music", "Game", "Sport", "Arts", "Film", "Literature", "Technology", "Culture", "Lifestyle", "Charity", "Fashion", "Kids", "Other"]  
+        },
+        {
+            "privacy": ["Private", "Public", "Offline", "Online", "Total"]
+        },
+        {
+            "events": [{
+                "id": "0",
+                "title": "Title",
+                "description": "description",
+                "privacy": "privacy",
+                "medium": "medium",
+                "startDate": "25.02.2024 12:10",
+                "endDate": "27.02.2024 10:10",
+                "duration": 30,
+                "language": "language",
+                "maxParticipants": 10,
+                "category": "category",
+                "terms": "terms",
+                "LocationName": "LocationName",
+                "latitude": 14,
+                "longtude": 45,
+                "acceptingRSVPs": "acceptingRSVPs",
+                "UploadImage": "https://www.pictureframesexpress.co.uk/blog/wp-content/uploads/2020/05/7-Tips-to-Finding-Art-Inspiration-Header-1024x649.jpg"
+            },
+            {
+                "id": "0",
+                "title": "Guitar evening",
+                "description": "Music",
+                "privacy": "public",
+                "medium": "offLine",
+                "startDate": "25.02.2024 12:10",
+                "endDate": "27.02.2024 10:10",
+                "duration": 60,
+                "language": "English",
+                "maxParticipants": 100,
+                "category": "dance",
+                "terms": "terms",
+                "LocationName": "Telavi",
+                "latitude": 14,
+                "longtude": 45,
+                "acceptingRSVPs": "Yes",
+                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/66fe8fbd8c7269b229db/preview?project=64885b43d529fd22b538"
+            },
+            {
+                "id": "0",
+                "title": "Lost",
+                "description": "Movie",
+                "privacy": "public",
+                "medium": "onLine",
+                "startDate": "25.02.2024 12:10",
+                "endDate": "27.02.2024 10:10",
+                "duration": 60,
+                "language": "English",
+                "maxParticipants": 100,
+                "category": "dance",
+                "terms": "terms",
+                "LocationName": "Telavi",
+                "latitude": 14,
+                "longtude": 45,
+                "acceptingRSVPs": "Yes",
+                "UploadImage": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p185013_b_v8_af.jpg"
+            },
+            {
+                "id": "0",
+                "title": "Tango",
+                "description": "Dance",
+                "privacy": "public",
+                "medium": "offLine",
+                "startDate": "25.02.2024 12:10",
+                "endDate": "27.02.2024 10:10",
+                "duration": 60,
+                "language": "English",
+                "maxParticipants": 100,
+                "category": "dance",
+                "terms": "terms",
+                "LocationName": "Telavi",
+                "latitude": 14,
+                "longtude": 45,
+                "acceptingRSVPs": "Yes",
+                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/6702e1c8209f27d1b0c1/preview?project=64885b43d529fd22b538"
+            }
+            ]
+        }
+
+]
+}
