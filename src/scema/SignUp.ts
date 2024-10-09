@@ -10,5 +10,5 @@ export const signUpScema = yup.object({
   Rpassword: yup
     .string()
     .oneOf([yup.ref("password"), undefined], "Passwords must match")
-    .required(),
+    .required("min 5 symbol"),
 });

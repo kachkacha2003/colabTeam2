@@ -36,6 +36,9 @@ export default function Login() {
                 placeholder="Email"
                 {...register("email")}
               />
+              {errors.email?.message ? (
+                <ErorSpanpassword>{errors.email.message}</ErorSpanpassword>
+              ) : null}
             </InputCon>
             <InputCon>
               <Label htmlFor="password">Password</Label>
@@ -50,6 +53,9 @@ export default function Login() {
               ) : (
                 <Shown src={shown} alt="" onClick={() => setHide(!hide)} />
               )}
+              {errors.password?.message ? (
+                <ErorSpanpassword>{errors.password.message}</ErorSpanpassword>
+              ) : null}
             </InputCon>
             <Btn>Sign In</Btn>
           </Form>
@@ -66,6 +72,14 @@ export default function Login() {
   );
 }
 
+const ErorSpanpassword = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 6rem;
+  top: 60%;
+`;
 const RegisterSpan = styled.span`
   font-size: 16px;
   color: red;

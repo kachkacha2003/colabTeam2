@@ -21,7 +21,6 @@ export default function SignUp() {
     register,
     handleSubmit,
     formState: { errors },
-    // watch,
   } = useForm<ISignUp>({ resolver: yupResolver(signUpScema) });
   const inputData: SubmitHandler<ISignUp> = (data) => console.log(data);
 
@@ -278,7 +277,7 @@ const LogoAndH1Con = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.6rem;
+  gap: 0.6rem;
 `;
 const Hone = styled.h1`
   font-size: 30px;
@@ -298,7 +297,7 @@ const Parent = styled.div`
   min-height: 100vh;
   @media (min-width: 1000px) {
     width: 50%;
-    gap: 5.4rem;
+    gap: 0.4rem;
   }
 `;
 const BigLogo = styled.img`

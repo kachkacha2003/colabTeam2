@@ -5,5 +5,5 @@ export const loginScema = yup.object({
     .string()
     .matches(emailRegex, "Please enter a valid email address")
     .required(),
-  password: yup.string().min(2).required(),
+  password: yup.string().min(5, "min 5 symbol").required(),
 });
