@@ -24,7 +24,7 @@ export default function Login() {
   return (
     <Cover>
       <Parent>
-        <Icon src={icon} alt="" />
+        <Icon src={icon} alt="" onClick={() => navigate(-1)} />
         <InputsCon>
           <Hone>Sign In</Hone>
           <Form onSubmit={handleSubmit(inputData)}>
@@ -36,6 +36,9 @@ export default function Login() {
                 placeholder="Email"
                 {...register("email")}
               />
+              {errors.email?.message ? (
+                <ErorSpanpassword>{errors.email.message}</ErorSpanpassword>
+              ) : null}
             </InputCon>
             <InputCon>
               <Label htmlFor="password">Password</Label>
@@ -50,6 +53,9 @@ export default function Login() {
               ) : (
                 <Shown src={shown} alt="" onClick={() => setHide(!hide)} />
               )}
+              {errors.password?.message ? (
+                <ErorSpanpassword>{errors.password.message}</ErorSpanpassword>
+              ) : null}
             </InputCon>
             <Btn>Sign In</Btn>
           </Form>
@@ -66,6 +72,14 @@ export default function Login() {
   );
 }
 
+const ErorSpanpassword = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 6rem;
+  top: 60%;
+`;
 const RegisterSpan = styled.span`
   font-size: 16px;
   color: red;
@@ -154,7 +168,7 @@ const Form = styled.form`
   align-items: center;
   gap: 1.5rem;
   @media (min-width: 1000px) {
-    gap: 4rem;
+    gap: 2rem;
   }
 `;
 const InputCon = styled.div`
@@ -194,5 +208,6 @@ const Parent = styled.div`
   min-height: 100vh;
   @media (min-width: 1000px) {
     width: 50%;
+    gap: 10rem;
   }
 `;

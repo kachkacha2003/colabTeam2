@@ -27,7 +27,7 @@ export default function SignUp() {
   return (
     <Cover>
       <Parent>
-        <Icon src={icon} alt="" />
+        <Icon src={icon} alt="" onClick={() => navigate(-1)} />
         <LogoAndH1Con>
           <img src={logo} alt="" />
           <Hone>Create an account</Hone>
@@ -40,7 +40,9 @@ export default function SignUp() {
               id="name"
               placeholder="John Doe"
               {...register("name")}
+              nameEror={errors?.name?.message}
             />
+            {errors.name?.message ? <ErorSpan>Min 5 symbol</ErorSpan> : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="email">Email</Label>
@@ -49,7 +51,11 @@ export default function SignUp() {
               id="email"
               placeholder="example@gmail.com"
               {...register("email")}
+              emailEror={errors.email?.message}
             />
+            {errors.email?.message ? (
+              <ErorSpan>Please enter valid email</ErorSpan>
+            ) : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="password">Password</Label>
@@ -59,6 +65,7 @@ export default function SignUp() {
               showchars={showchars}
               placeholder="Password"
               {...register("password")}
+              passwordEror={errors.password?.message}
             />
             {showchars ? (
               <Hiden
@@ -73,6 +80,9 @@ export default function SignUp() {
                 onClick={() => setShowChars(!showchars)}
               />
             )}
+            {errors.password?.message ? (
+              <ErorSpanpassword>Min 5 symbol</ErorSpanpassword>
+            ) : null}
           </InputsCon>
           <InputsCon>
             <Label htmlFor="Rpassword">Confirm Password</Label>
@@ -82,6 +92,7 @@ export default function SignUp() {
               showcharsR={showcharsR}
               placeholder="Repeat  Password"
               {...register("Rpassword")}
+              RpasswordEror={errors.Rpassword?.message}
             />
             {showcharsR ? (
               <Hiden
@@ -96,6 +107,9 @@ export default function SignUp() {
                 onClick={() => setShowCharsR(!showcharsR)}
               />
             )}
+            {errors.Rpassword?.message ? (
+              <ErorSpanpassword>{errors.Rpassword.message}</ErorSpanpassword>
+            ) : null}
           </InputsCon>
           <Btn>Sign up</Btn>
         </Form>
@@ -108,7 +122,22 @@ export default function SignUp() {
     </Cover>
   );
 }
-
+const ErorSpanpassword = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 6rem;
+  top: 60%;
+`;
+const ErorSpan = styled.span`
+  color: red;
+  font-size: 12px;
+  font-weight: 500;
+  position: absolute;
+  right: 2rem;
+  top: 60%;
+`;
 const LoginSpan = styled.p`
   color: red;
   font-size: 16px;
@@ -157,13 +186,17 @@ const Hiden = styled.img`
   right: 2rem;
   top: 50%;
 `;
-const RpasswordInput = styled.input<{ showcharsR: boolean }>`
+const RpasswordInput = styled.input<{
+  showcharsR: boolean;
+  RpasswordEror: string | undefined;
+}>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.RpasswordEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -172,13 +205,17 @@ const RpasswordInput = styled.input<{ showcharsR: boolean }>`
     font-weight: 600;
   }
 `;
-const PAsswordInput = styled.input<{ showchars: boolean }>`
+const PAsswordInput = styled.input<{
+  showchars: boolean;
+  passwordEror: string | undefined;
+}>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.passwordEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -187,13 +224,14 @@ const PAsswordInput = styled.input<{ showchars: boolean }>`
     font-weight: 600;
   }
 `;
-const EmailInput = styled.input`
+const EmailInput = styled.input<{ emailEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.emailEror ? " 1px solid red" : "1px solid lightgray "};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -202,13 +240,14 @@ const EmailInput = styled.input`
     font-weight: 600;
   }
 `;
-const NameInput = styled.input`
+const NameInput = styled.input<{ nameEror: string | undefined }>`
   font-size: 16px;
   font-weight: 500;
   width: 100%;
   padding: 1.5rem 1rem;
   border-radius: 2rem;
-  border: 1px solid lightgray;
+  border: ${(props) =>
+    props.nameEror ? "1px solid red" : "1px solid lightgray"};
   outline: none;
   color: #121212;
   &::placeholder {
@@ -238,7 +277,7 @@ const LogoAndH1Con = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.6rem;
+  gap: 0.6rem;
 `;
 const Hone = styled.h1`
   font-size: 30px;
@@ -258,7 +297,7 @@ const Parent = styled.div`
   min-height: 100vh;
   @media (min-width: 1000px) {
     width: 50%;
-    gap: 5.4rem;
+    gap: 0.4rem;
   }
 `;
 const BigLogo = styled.img`
