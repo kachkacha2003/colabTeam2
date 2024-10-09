@@ -5,6 +5,7 @@ import data from "../../data.json";
 import test1 from "/image/EventHub+logo.png";
 
 
+
 export default function Events(){
     const navigate = useNavigate()
     const selectPrivacy = data.data[1].privacy
@@ -194,3 +195,4 @@ const BottomCont = styled.div`
         flex-direction: column;
     }
 `
+

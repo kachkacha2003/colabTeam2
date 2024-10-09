@@ -4,7 +4,9 @@ import burger from "/icon-hamburger.svg";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { useState } from "react";
 import Burger from "./Burger";
+import { useNavigate } from "react-router-dom";
 export default function Header() {
+  const navigate = useNavigate();
   const [burgerShow, setBurgerShow] = useState<boolean>(false);
   const isSmallDevice = useMediaQuery("only screen and (max-width : 1000px)");
   return (
@@ -18,8 +20,8 @@ export default function Header() {
       ) : (
         <SpanCon>
           <Para>Explore</Para>
-          <Para>Login</Para>
-          <Para>Signup</Para>
+          <Para onClick={() => navigate("/login")}>Login</Para>
+          <Para onClick={() => navigate("/signUp")}>Signup</Para>
         </SpanCon>
       )}
       {burgerShow ? <Burger /> : null}
@@ -31,6 +33,9 @@ const Para = styled.p`
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 const SpanCon = styled.div`
   display: flex;
