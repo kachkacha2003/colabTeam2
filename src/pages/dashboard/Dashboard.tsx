@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 
 export default function Dashboard(){
     const [dateTime, setDateTime] = useState<string>(new Date().toLocaleString());
@@ -11,12 +11,16 @@ export default function Dashboard(){
         }, 1000);
         return () => clearInterval(timer)
     }, [])
+
+    const navigate = useNavigate();
     return(
     <>
      <Cont>
       <DashboardCreate>
         <h1>Dashboard</h1>
-        <button>+ Creat</button>
+        <button
+        onClick={()=>{navigate("/dashboard/create")}}
+        >+ Creat</button>
       </DashboardCreate>
       <p>{dateTime}</p>
       <EventInfo>
@@ -48,8 +52,10 @@ export default function Dashboard(){
 }
 
 const Cont = styled.nav`
+
+background-color: rgb(243 244 246);
     min-width: 80%;
-    padding: 50px 20px 20px 0;
+    padding: 50px 20px 20px 20px;
     p{
         font-size: 20px;
     }

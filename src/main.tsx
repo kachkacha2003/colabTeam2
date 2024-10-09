@@ -11,9 +11,13 @@ import Events from "./pages/dashboard/Events";
 import Invities from "./pages/dashboard/Invities";
 import Notifications from "./pages/dashboard/Notifications";
 import RSVPs from "./pages/dashboard/RSVPs";
+
+import Create from "./pages/dashboard/Create";
+
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import MainLayout from "./MainLayout";
+
 const router = createBrowserRouter([
   { path: "/signup", element: <SignUp /> },
   { path: "/login", element: <Login /> },
@@ -22,6 +26,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
 
     children: [
+
       {
         path: "/",
         element: <Home />,
@@ -39,6 +44,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
 ]);
 
 createRoot(document.getElementById("root")!).render(

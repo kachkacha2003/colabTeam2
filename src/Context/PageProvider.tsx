@@ -7,6 +7,8 @@ const statesContext = createContext<Itype>({
 });
 export default function PageProvider({ children }: { children: ReactNode }) {
   const [test, setTest] = useState<boolean>(false);
+
+
   return (
     <statesContext.Provider value={{ test, setTest }}>
       {children}
