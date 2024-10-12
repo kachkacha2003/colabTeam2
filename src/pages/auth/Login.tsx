@@ -13,6 +13,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Login() {
   const [hide, setHide] = useState(true);
+  
   const bg = useMediaQuery("only screen and (min-width : 1000px)");
   const navigate = useNavigate();
   const {
