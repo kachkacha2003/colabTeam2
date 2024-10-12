@@ -2,16 +2,17 @@ import React, { ReactNode, useState } from "react";
 import styled from "styled-components";
 import data from "../../data.json"
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaEvent } from "../../schema/createEvent";
+import { INewEvents} from "../../types/Events";
 
 export default function Create(){
   const navigate = useNavigate();
   const cateroriesArray = data.data[0].categories;
   const [newEvent, setnewEvent] = useState({
     id: 0,
-    tatle: "",
+    title: "",
     description: "",
     privacy: "",
     medium: "",
@@ -36,15 +37,12 @@ export default function Create(){
 
   const choosePrivacy = (item: string)=>{
     setPrivacy(item)
-    console.log(item)
   }
   const chooseMedium = (item: string)=>{
     setMedium(item)
-    console.log(item)
   }
   const chooseAcceptingRSVPs = (item: string)=>{
     setAcceptingRSVPs(item)
-    console.log(item)
   }
   
 
@@ -53,6 +51,7 @@ export default function Create(){
     handleSubmit,
     formState: {errors},
   } = useForm({ resolver: yupResolver(schemaEvent)})
+  // const inputEventData: SubmitHandler<INewEvents> = (data) =>console.log(data)
 
   const handleChange = (event: any) => {
     event.preventDefault();
@@ -61,24 +60,6 @@ export default function Create(){
       ...prew,
       [name]: value,
     }))
-  }
-
-  console.log(data.data[2].events)
-
-  async function PostEvent() {
-    const response = await fetch("http://localhost:3000/data", {
-        method: "POST",
-        headers: {
-          "content-Type": "application-json",
-        },
-        body: JSON.stringify(newEvent)
-      });
-      if (!response.ok) {
-        console.error("Failed to post event");
-        return;
-      }
-    const data = await response.json()
-    console.log(data)
   }
   
     return(
@@ -93,7 +74,7 @@ export default function Create(){
           <h1>Create Event</h1>
         </CreateEvent>
         
-        <InputField onSubmit={handleSubmit(PostEvent)}>
+        <InputField onSubmit={handleSubmit(handleChange)}>
           <Couple>
             <label htmlFor="title">Title <span>*</span></label>
             <input
@@ -200,8 +181,8 @@ export default function Create(){
             <div className="chooseButton" style={{flexWrap: "wrap"}}>
             {cateroriesArray.map((item, index) =>(
               <div key ={index}>
-              <p onClick={()=>{console.log(selectedIndex); setSelectedIndex(index)}}
-              style={selectedIndex === index ? {backgroundColor: "#63b6bd"} : {backgroundColor: "#fff"}}
+              <p onClick={()=>{setSelectedIndex(index+1)}}
+              style={selectedIndex === index+1 ? {backgroundColor: "#63b6bd"} : {backgroundColor: "#fff"}}
               >{item}</p>
             </div>
             ))}
@@ -289,9 +270,10 @@ export default function Create(){
   }
   
   const Cont = styled.nav`
-  background-color: rgb(243 244 246);
+      background-color: rgb(243 244 246);
       width: 100%;
       padding: 20px 20px 40px 20px;
+      
       p{
           font-size: 18px;
       }
@@ -306,6 +288,7 @@ export default function Create(){
       justify-content: space-between;
       align-items: left;
       gap: 10px;
+      
       h1{
           font-size: 30px;
       }
@@ -328,6 +311,9 @@ export default function Create(){
       gap: 50px;
       height: 700px;
       overflow-y: auto;
+      &::-webkit-scrollbar {
+      display: none;
+    }
   `
   const Couple = styled.div`
     display: flex;
@@ -339,12 +325,12 @@ export default function Create(){
     }
     .chooseButton{
       display: flex;
-      gap: 5px;
+      gap: 10px;
       p{
         width: 150px;
         text-align: center;
         padding: 2px 10px;
-        border: 1px solid #63b6bd;
+        border: 1px solid black;
         border-radius: 5px;
       }
     }
@@ -356,14 +342,14 @@ export default function Create(){
         height: 40px;
         border-radius: 10px;
     }
-    &>p{
+    & > p{
         border: none;
         cursor: pointer;
     }
     p:hover{
             background-color: #63b6bd;
         }
-     span{
+    & > span{
         color: red;
       }
   `
@@ -376,7 +362,7 @@ export default function Create(){
 `;
 const ErrorButtonMessage = styled.h4`
     width: 100%;
-    color: #63b6db;
+    color: black;
     margin-top: 1px;
 `
 

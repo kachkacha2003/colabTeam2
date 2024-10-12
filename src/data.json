@@ -27,7 +27,7 @@
                 "UploadImage": "https://www.pictureframesexpress.co.uk/blog/wp-content/uploads/2020/05/7-Tips-to-Finding-Art-Inspiration-Header-1024x649.jpg"
             },
             {
-                "id": "0",
+                "id": "1",
                 "title": "Guitar evening",
                 "description": "Music",
                 "privacy": "public",
@@ -46,7 +46,7 @@
                 "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/66fe8fbd8c7269b229db/preview?project=64885b43d529fd22b538"
             },
             {
-                "id": "0",
+                "id": "2",
                 "title": "Lost",
                 "description": "Movie",
                 "privacy": "public",
@@ -65,7 +65,7 @@
                 "UploadImage": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p185013_b_v8_af.jpg"
             },
             {
-                "id": "0",
+                "id": "3",
                 "title": "Tango",
                 "description": "Dance",
                 "privacy": "public",

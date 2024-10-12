@@ -2,15 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import data from "../../data.json";
-import test1 from "/image/EventHub+logo.png";
+import { Context } from "../../Context/PageProvider"
 
 
 
 export default function Events(){
     const navigate = useNavigate()
     const selectPrivacy = data.data[1].privacy
-    const eventsCard = data.data[2].events
-
+    
+     const {newevent, setNewEvent} = Context()
+    console.log(newevent[0])
 
     return(
         <>
@@ -40,8 +41,11 @@ export default function Events(){
         </SearchEvent>
 
         <AllEvents>
-        {eventsCard?.map((items, index)=>(
-            <Event key={index}>
+        {newevent?.map((items, index)=>(
+            <Event 
+                key={index}
+                onClick={()=>{navigate(`/dashboard/event/${items.title}`)}}
+                >
                 <TopCont>
                     <div style={{position: "relative"}}>
                         <img src={items.UploadImage} alt="" style={{width: "220px", height: "220px", borderRadius: "0 20px 0 20px"}}/>
@@ -76,19 +80,19 @@ export default function Events(){
 }
 
 const Cont = styled.nav`
-background-color: rgb(243 244 246);
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 40px 20px 40px 20px;
-      gap: 50px;
-      & > p{
-          font-size: 18px;
-      }
-      .createButton{
-        padding: 10px 5px;
+    background-color: rgb(243 244 246);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 40px 20px 40px 20px;
+    gap: 50px;
+    & > p{
         font-size: 18px;
-      }
+    }
+    .createButton{
+      padding: 10px 5px;
+      font-size: 18px;
+    }
     `
   const YourEvent = styled.div`
   display: flex;
