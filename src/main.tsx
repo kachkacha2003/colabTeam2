@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import Layot from "../src/Layout";
-import PageProvider from "./Context/PageProvider";
 import { Global } from "./GlobalStyles";
+import PageProvider from "./Context/PageProvider";
+import EventProvider from "./Context/EventProvider";
+import UserProvider from "./Context/UsersProvider";
+import ShowMembersProvider from "./Context/ShowMembersProvider";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import Events from "./pages/dashboard/Events";
@@ -14,6 +17,7 @@ import Notifications from "./pages/dashboard/Notifications";
 import RSVPs from "./pages/dashboard/RSVPs";
 import Create from "./pages/dashboard/Create";
 import Event from "./pages/dashboard/Event";
+
 
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
@@ -44,16 +48,22 @@ const router = createBrowserRouter([
           { path: "/dashboard/notifications", element: <Notifications /> },
           { path: "/dashboard/create", element: <Create /> },
           { path: "/dashboard/event", element: <Event />},
-          { path: "/dashboard/event/:id", element: <Event />}
+          { path: "/dashboard/event/:id", element: <Event />},
         ],
       },    
 ]);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Global />
     <PageProvider>
-      <Global />
-      <RouterProvider router={router} />
-    </PageProvider>
+      <EventProvider>
+        <UserProvider>
+          <ShowMembersProvider>
+            <RouterProvider router={router} />
+          </ShowMembersProvider>
+        </UserProvider>
+      </EventProvider>
+    </PageProvider> 
   </StrictMode>
 );

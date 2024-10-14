@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import data from "../../data.json";
-import { Context } from "../../Context/PageProvider"
+import { UseNewEvent } from "../../Context/EventProvider";
+
 
 
 
 export default function Events(){
     const navigate = useNavigate()
     const selectPrivacy = data.data[1].privacy
-    
-     const {newevent, setNewEvent} = Context()
-    console.log(newevent[0])
+    const {newEvent, setNewEvent} = UseNewEvent()
+
 
     return(
         <>
@@ -41,7 +41,7 @@ export default function Events(){
         </SearchEvent>
 
         <AllEvents>
-        {newevent?.map((items, index)=>(
+        {newEvent.map((items, index)=>(
             <Event 
                 key={index}
                 onClick={()=>{navigate(`/dashboard/event/${items.title}`)}}
@@ -86,6 +86,11 @@ const Cont = styled.nav`
     width: 100%;
     padding: 40px 20px 40px 20px;
     gap: 50px;
+    height: 100vh;
+    overflow-y: auto;
+      &::-webkit-scrollbar {
+      display: none;
+      }
     & > p{
         font-size: 18px;
     }
@@ -199,4 +204,12 @@ const BottomCont = styled.div`
         flex-direction: column;
     }
 `
+
+function Usercontext(): { users: any; setUsers: any; } {
+    throw new Error("Function not implemented.");
+}
+
+function neweventcontext(): { newEvent: any; setNewEvent: any; } {
+    throw new Error("Function not implemented.");
+}
 
