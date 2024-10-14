@@ -52,6 +52,7 @@ const MainCont = styled.div`
   flex-direction: column;
   align-items: center;
   width: 200px;
+  height: 100vh;
   @media (min-width: 1000px){
     width: 300px;
   }

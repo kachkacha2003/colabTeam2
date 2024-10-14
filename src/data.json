@@ -8,7 +8,7 @@
         },
         {
             "events": [{
-                "id": "0",
+                "id": 0,
                 "title": "Title",
                 "description": "description",
                 "privacy": "privacy",
@@ -17,17 +17,18 @@
                 "endDate": "27.02.2024 10:10",
                 "duration": 30,
                 "language": "language",
-                "maxParticipants": 10,
+                "maxParticipants": 0,
                 "category": "category",
                 "terms": "terms",
                 "LocationName": "LocationName",
                 "latitude": 14,
                 "longtude": 45,
                 "acceptingRSVPs": "acceptingRSVPs",
-                "UploadImage": "https://www.pictureframesexpress.co.uk/blog/wp-content/uploads/2020/05/7-Tips-to-Finding-Art-Inspiration-Header-1024x649.jpg"
+                "UploadImage": "https://www.pictureframesexpress.co.uk/blog/wp-content/uploads/2020/05/7-Tips-to-Finding-Art-Inspiration-Header-1024x649.jpg",
+                "Members": 5
             },
             {
-                "id": "1",
+                "id": 1,
                 "title": "Guitar evening",
                 "description": "Music",
                 "privacy": "public",
@@ -36,17 +37,18 @@
                 "endDate": "27.02.2024 10:10",
                 "duration": 60,
                 "language": "English",
-                "maxParticipants": 100,
+                "maxParticipants": 0,
                 "category": "dance",
                 "terms": "terms",
                 "LocationName": "Telavi",
                 "latitude": 14,
                 "longtude": 45,
                 "acceptingRSVPs": "Yes",
-                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/66fe8fbd8c7269b229db/preview?project=64885b43d529fd22b538"
+                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/66fe8fbd8c7269b229db/preview?project=64885b43d529fd22b538",
+                "Members": 57
             },
             {
-                "id": "2",
+                "id": 2,
                 "title": "Lost",
                 "description": "Movie",
                 "privacy": "public",
@@ -55,17 +57,18 @@
                 "endDate": "27.02.2024 10:10",
                 "duration": 60,
                 "language": "English",
-                "maxParticipants": 100,
+                "maxParticipants": 17,
                 "category": "dance",
                 "terms": "terms",
                 "LocationName": "Telavi",
                 "latitude": 14,
                 "longtude": 45,
                 "acceptingRSVPs": "Yes",
-                "UploadImage": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p185013_b_v8_af.jpg"
+                "UploadImage": "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p185013_b_v8_af.jpg",
+                "Members": 25
             },
             {
-                "id": "3",
+                "id": 3,
                 "title": "Tango",
                 "description": "Dance",
                 "privacy": "public",
@@ -81,9 +84,31 @@
                 "latitude": 14,
                 "longtude": 45,
                 "acceptingRSVPs": "Yes",
-                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/6702e1c8209f27d1b0c1/preview?project=64885b43d529fd22b538"
+                "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/6702e1c8209f27d1b0c1/preview?project=64885b43d529fd22b538",
+                "Members": 0
             }
             ]
+        },
+        {
+            "users": [{
+                "id": 0,
+                "userName": "Katrina Zuus",
+                "eMail": "Katrinazuus@gmail.com",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
+            },
+            {
+                "id": 1,
+                "userName": "Baqari",
+                "eMail": "baqari@gmail.com",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
+            },
+            {
+                "id": 2,
+                "userName": "Onise",
+                "eMail": "Onise@gmail.com",
+                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
+            }
+        ]
         }
 
 ]
