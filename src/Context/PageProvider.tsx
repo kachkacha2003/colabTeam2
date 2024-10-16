@@ -1,23 +1,30 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, useContext, ReactNode, useState } from "react";
+import { IUser } from "../types/Events";
 import { Itype } from "../types/ContextType";
-
-const statesContext = createContext<Itype>({
-  test: false,
-  setTest: () => {}
+const UsersContext = createContext<Itype>({
+  count: 1,
+  setCount: () => {},
+  users: [],
+  setUsers: () => {},
 });
-
-export default function PageProvider({ children }: { children: ReactNode }) {
-  const [test, setTest] = useState<boolean>(false);
+export default function UserProvider({ children }: { children: ReactNode }) {
+  const [users, setUsers] = useState<IUser[] | undefined>([
+    {
+      id: 1,
+      userName: "",
+      email: "",
+      photo: "",
+    },
+  ]);
+  const [count, setCount] = useState<number>(1);
   return (
-    <statesContext.Provider 
-    value={{test, setTest }}
-    >
+    <UsersContext.Provider value={{ count, setCount, users, setUsers }}>
       {children}
-    </statesContext.Provider>
+    </UsersContext.Provider>
   );
 }
 
-export function Context(){
-  const context = useContext(statesContext);
+export function Context() {
+  const context = useContext(UsersContext);
   return context;
-};
+}
