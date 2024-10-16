@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import data from "../../data.json";
@@ -11,6 +11,12 @@ export default function Events(){
     const navigate = useNavigate()
     const selectPrivacy = data.data[1].privacy
     const {newEvent, setNewEvent} = UseNewEvent()
+    const [value, setValue] = useState("")
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault()
+        setValue(e.target.value)
+    } 
+    console.log(value)
 
 
     return(
@@ -32,7 +38,16 @@ export default function Events(){
         </YourEvent>
 
         <SearchEvent>
-        <input type="text" />
+        <input 
+            type="text" 
+            placeholder="Search"
+            onChange={inputHandler}
+            onKeyDown={(e) => {
+                if (e.key === "Enter" && value.length >= 3){
+                    localStorage.setItem("searchValue", JSON.stringify(value));
+                }
+            }}
+            />
         <select >
         {selectPrivacy?.map((item, index)=>(
             <option key={index} value="ToTal" selected>{item}</option>
@@ -150,7 +165,7 @@ const SearchEvent = styled.div`
     width: 97%;
     & > input{
         width: 100%;
-        padding: 15px 7px;
+        padding: 15px 15px;
         border-radius: 12px 0 0 12px;
         border: solid 1px gray;
         background-color: #edebeb;

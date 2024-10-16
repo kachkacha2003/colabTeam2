@@ -10,7 +10,8 @@ const UsersContext = createContext<IUsers>({
 
 export default function  UserProvider({children}: {children: ReactNode}){
     const userData=data.data[3].users
-    const [users, setUsers] = useState<TUsers>(userData)
+    const [users, setUsers] = useState<TUsers | undefined>(userData)
+    
     return (
         <UsersContext.Provider value={{users, setUsers}}>
         {children}

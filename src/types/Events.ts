@@ -19,6 +19,7 @@ export  interface IEvent {
     Members: number;
   };
  export type TEvents = IEvent[];
+
  export interface INewEventContext {
    newEvent: TEvents;
    setNewEvent:  React.Dispatch<React.SetStateAction<TEvents>>
@@ -40,6 +41,8 @@ export interface IShowMembers {
    showMembers: boolean;
    setShowMembers: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+
 
 
 
