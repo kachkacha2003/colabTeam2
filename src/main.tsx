@@ -17,15 +17,17 @@ import Notifications from "./pages/dashboard/Notifications";
 import RSVPs from "./pages/dashboard/RSVPs";
 import Create from "./pages/dashboard/Create";
 import Event from "./pages/dashboard/Event";
-
+import EventSearch from "./pages/search/EventSearch";
 
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import MainLayout from "./MainLayout";
 
+
 const router = createBrowserRouter([
   { path: "/signup", element: <SignUp /> },
   { path: "/login", element: <Login /> },
+  { path: "/map", element: <Intro /> },
   {
     path: "/",
     element: <MainLayout />,
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
           { path: "/dashboard/create", element: <Create /> },
           { path: "/dashboard/event", element: <Event />},
           { path: "/dashboard/event/:id", element: <Event />},
+          { path: "/aaa", element: <EventSearch />},
         ],
       },    
 ]);
