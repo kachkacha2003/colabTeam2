@@ -53,7 +53,7 @@ export default function EventSearch() {
                         <div style={{position: "relative"}}>
                             <img 
                             src={items.UploadImage} alt="" style={{width: "220px", height: "220px", borderRadius: "0 20px 0 20px"}}
-                            onClick={()=>navigate("/aaa")}
+                            onClick={()=>navigate("/bbb")}
                             />
                             <span style={{position: "absolute", left: "0px", top: "0px", color: "black", fontSize: "20px", backgroundColor: "#fff", borderRadius: "0 0 12px 0", width: "100px"}}>
                             {items.category}

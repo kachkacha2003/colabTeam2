@@ -1,4 +1,4 @@
-import { StrictMode, useState } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
@@ -6,9 +6,6 @@ import Home from "./pages/Home";
 import Layot from "../src/Layout";
 import { Global } from "./GlobalStyles";
 import PageProvider from "./Context/PageProvider";
-import EventProvider from "./Context/EventProvider";
-import UserProvider from "./Context/UsersProvider";
-import ShowMembersProvider from "./Context/ShowMembersProvider";
 
 import Dashboard from "./pages/dashboard/Dashboard";
 import Events from "./pages/dashboard/Events";
@@ -21,6 +18,7 @@ import EventSearch from "./pages/search/EventSearch";
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import MainLayout from "./MainLayout";
+import Coordinates from "./intro/coordinates";
 
 const router = createBrowserRouter([
   { path: "/signup", element: <SignUp /> },
@@ -50,6 +48,8 @@ const router = createBrowserRouter([
       { path: "/dashboard/event", element: <Event /> },
       { path: "/dashboard/event/:id", element: <Event /> },
       { path: "/aaa", element: <EventSearch /> },
+      { path: "/bbb", element: <Coordinates /> },
+
     ],
   },
 ]);
@@ -58,13 +58,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Global />
     <PageProvider>
-      <EventProvider>
-        <UserProvider>
-          <ShowMembersProvider>
-            <RouterProvider router={router} />
-          </ShowMembersProvider>
-        </UserProvider>
-      </EventProvider>
+            <RouterProvider router={router} />  
     </PageProvider>
   </StrictMode>
 );

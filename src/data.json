@@ -93,19 +93,19 @@
             "users": [{
                 "id": 0,
                 "userName": "Katrina Zuus",
-                "eMail": "Katrinazuus@gmail.com",
+                "email": "Katrinazuus@gmail.com",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
             },
             {
                 "id": 1,
                 "userName": "Baqari",
-                "eMail": "baqari@gmail.com",
+                "email": "baqari@gmail.com",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
             },
             {
                 "id": 2,
                 "userName": "Onise",
-                "eMail": "Onise@gmail.com",
+                "email": "Onise@gmail.com",
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
             }
         ]

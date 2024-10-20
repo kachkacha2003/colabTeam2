@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import data from "../../data.json";
-import { UseNewEvent } from "../../Context/EventProvider";
+import { Context } from "../../Context/PageProvider";
 
 
 
@@ -10,7 +10,7 @@ import { UseNewEvent } from "../../Context/EventProvider";
 export default function Events(){
     const navigate = useNavigate()
     const selectPrivacy = data.data[1].privacy
-    const {newEvent, setNewEvent} = UseNewEvent()
+    const {newEvent} = Context()
     const [value, setValue] = useState("")
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
@@ -56,7 +56,7 @@ export default function Events(){
         </SearchEvent>
 
         <AllEvents>
-        {newEvent.map((items, index)=>(
+        {newEvent?.map((items, index)=>(
             <Event 
                 key={index}
                 onClick={()=>{navigate(`/dashboard/event/${items.title}`)}}
@@ -220,11 +220,4 @@ const BottomCont = styled.div`
     }
 `
 
-function Usercontext(): { users: any; setUsers: any; } {
-    throw new Error("Function not implemented.");
-}
-
-function neweventcontext(): { newEvent: any; setNewEvent: any; } {
-    throw new Error("Function not implemented.");
-}
 
