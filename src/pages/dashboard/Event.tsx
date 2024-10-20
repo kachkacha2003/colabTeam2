@@ -2,17 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import AddMembers from "./AddMembers"
-import { UseNewEvent } from "../../Context/EventProvider";
-import { UseShowMembers } from "../../Context/ShowMembersProvider";
 import MapComponent from "../../intro/MapComponent";
+import { Context } from "../../Context/PageProvider";
 
 
 export default function Event(){
     const {id} = useParams()
-    const {newEvent} = UseNewEvent()
-    const {showMembers, setShowMembers} = UseShowMembers()
+    const {newEvent} = Context()
+    const {showMembers, setShowMembers} = Context()
     
-    const eventId = newEvent.find((el: { title: string | undefined; })=>el.title==id)
+    const eventId = newEvent?.find((el: { title: string | undefined; })=>el.title==id)
 
     return(
         <Cont>
@@ -23,8 +22,6 @@ export default function Event(){
                     </ContImg>
 
                     <ContMapAddress>
-                        <h1 className="map">MAP</h1> 
-                        {/* <Intro /> */}
                         <MapComponent/>
                         <ContAddress> 
                             <div className="logoText">

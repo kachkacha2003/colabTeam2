@@ -1,11 +1,10 @@
 import styled from "styled-components"
-import { UseUsers} from "../../Context/UsersProvider"
-import { UseShowMembers } from "../../Context/ShowMembersProvider"
+import { Context } from "../../Context/PageProvider"
 
 
 export default function AddMembers(){
-    const {users} = UseUsers()
-    const {showMembers, setShowMembers} = UseShowMembers()
+    const {users} = Context()
+    const {showMembers, setShowMembers} = Context()
     console.log(showMembers)
     return(
         <MemberCont>
@@ -26,7 +25,7 @@ export default function AddMembers(){
                     <img src={items.photo} alt="" />
                         <div className="nameEmail">
                             <p>{items.userName}</p>
-                            <p>{items.eMail}</p>
+                            <p>{items.email}</p>
                         </div>
                 </div>
                 <p>Invite</p>

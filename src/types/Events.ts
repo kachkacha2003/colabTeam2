@@ -37,7 +37,3 @@ export interface IUsers {
   setUsers: React.Dispatch<React.SetStateAction<TUsers | undefined>>;
 }
 
-export interface IShowMembers {
-  showMembers: boolean;
-  setShowMembers: React.Dispatch<React.SetStateAction<boolean>>;
-}
