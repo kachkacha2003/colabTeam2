@@ -18,6 +18,14 @@ export default function Event(){
                 <Couple>
                     <ContImg>
                         <img src={eventId?.UploadImage} alt="" />
+                        <ChangeBtn>
+                            <p>edit</p>
+                            <p>delete</p>
+                            <p>copy</p>
+                            <p>invite</p>
+                        </ChangeBtn>
+
+                        
                     </ContImg>
 
                     <ContMapAddress>
@@ -58,7 +66,7 @@ export default function Event(){
 const Cont = styled.div`
     background-color: rgb(243 244 246);
     width: 100%;
-    font-size: 20px ;
+    font-size: 14px;
     height: 100vh;
     overflow-y: auto;
       &::-webkit-scrollbar {
@@ -66,42 +74,56 @@ const Cont = styled.div`
       }
 `
 const EventDescr = styled.div`
-    padding: 20px 20px 20px 20px;
+    padding: 10px 10px 10px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    gap: 20px;
+    gap: 12px;
     width: 100%;
     border: 1px solid black;
+    @media (min-width: 1000px){
+         padding: 20px 20px 20px 20px;
+         /* gap: 15px; */
+    }
 `
 const Couple = styled.div`
    display: flex;
    flex-direction: column;
-   gap: 15px;
-   @media (min-width: 800px){
+   gap: 7px;
+   @media (min-width: 1000px){
         flex-direction: row;
         justify-content: space-between;
+        gap: 20px;
     }
 
 `
 const ContImg = styled.div`
 width: 100%;
+position: relative;
 img{
     width: 100%;
     border-radius: 10px;
-    height: 100%;
+    height: 250px;
+    @media (min-width: 1000px){
+        height: 405px;
+    }
+   
 }
     
 `
 const ContMapAddress = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     justify-content: space-between;
     width: 100%;
+    height: 250px;
     padding: 20px;
     border-radius: 10px;
     background-color: #d4d0d0;
+    @media (min-width: 1000px){
+        height: 100%;
+    }
     .map{
         padding: 50px;
         border: 1px solid black;
@@ -110,12 +132,24 @@ const ContMapAddress = styled.div`
         display: flex;
         align-items: center;
         gap: 5px;
+        @media (min-width: 1000px){
+            font-size: 20px;
+        }
     }
 `
 const ContAddress = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
+        @media (min-width: 550px){
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+    }
+    @media (min-width: 1000px){
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 const ContDescr = styled.div`
@@ -124,15 +158,45 @@ const ContDescr = styled.div`
     gap: 10px;
     background-color: #d4d0d0;
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px;
 
     .title{
-        font-size: 28px;
+        font-size: 20px;
         font-weight: 600;
+        @media (min-width: 1000px){
+            font-size: 28px;
+    }
     }
     .description{
         font-size: 14px;
         opacity: 0.6;
     }
-    
+`
+const ChangeBtn = styled.div`
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    @media (min-width: 650px){
+        grid-template-columns: 1fr  1fr 1fr 1fr; 
+    }
+    @media (min-width: 1000px){
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    & > p {
+        background-color: #d4d0d0;
+        color: black;
+        padding: 5px 10px;
+        width: 80px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid black;
+        cursor: pointer;
+        @media (min-width: 650px){
+            font-size: 18px;
+    }
+    }
 `

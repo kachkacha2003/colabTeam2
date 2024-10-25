@@ -1,5 +1,5 @@
 import { createContext, useContext, ReactNode, useState } from "react";
-import { IEvent, IUser, ICoordinates, INewEvent  } from "../types/Events";
+import { IEvent, IUser, ICoordinates} from "../types/Events";
 import { Itype } from "../types/ContextType";
 import data from "../data.json"
 
@@ -13,7 +13,7 @@ const UsersContext = createContext<Itype>({
   setShowMembers: () => { },
   coordinates: {
     lat: 0,
-    log: 0
+    lon: 0
   },
   setCoordinates: () => {},
 });

@@ -10,7 +10,7 @@ const MapComponent: React.FC = () => {
   
     const lat: number = coordinates?.lat ?? 0
     const lon: number = coordinates?.lon ?? 0
-  const position: [number, number] = [lat, lon]; 
+  const position: [number, number] = [lat, lon];
   console.log(position)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const MapComponent: React.FC = () => {
   console.log(mapPosition)
 
   return (
-    <MapContainer center={mapPosition} zoom={5} style={{ height: "200px", width: "100%" }}>
+    <MapContainer center={mapPosition} zoom={0.5} style={{ height: "200px", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
