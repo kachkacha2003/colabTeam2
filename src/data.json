@@ -1,8 +1,6 @@
 {
     "data": [
-        {
-            "categories": ["Music", "Game", "Sport", "Arts", "Film", "Literature", "Technology", "Culture", "Lifestyle", "Charity", "Fashion", "Kids", "Other"]  
-        },
+        
         {
             "privacy": ["Private", "Public", "Offline", "Online", "Total"]
         },
@@ -40,9 +38,9 @@
                 "maxParticipants": 0,
                 "category": "dance",
                 "terms": "terms",
-                "LocationName": "Telavi",
-                "latitude": 14,
-                "longtude": 45,
+                "LocationName": "didi digomi",
+                "latitude": 41.7964559,
+                "longtude": 44.746979412460036,
                 "acceptingRSVPs": "Yes",
                 "UploadImage": "https://cloud.appwrite.io/v1/storage/buckets/6488600b698ae8223e7c/files/66fe8fbd8c7269b229db/preview?project=64885b43d529fd22b538",
                 "Members": 57
@@ -109,7 +107,14 @@
                 "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNKfj6RsyRZqO4nnWkPFrYMmgrzDmyG31pFQ&amp;s" 
             }
         ]
+        },
+        {
+            "coordinates": {
+                "lat": 0,
+                "lon": 0
         }
+        }
+
 
 ]
 }
