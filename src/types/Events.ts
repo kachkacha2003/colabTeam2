@@ -1,4 +1,5 @@
-export interface IEvent {
+
+export interface IEvent { 
   id: number;
   title: string;
   description: string;
@@ -19,10 +20,10 @@ export interface IEvent {
   Members: number;
 }
 export type TEvents = IEvent[];
+export interface INewEvent {
+  newEvent: TEvents,
+  setNewEvent: React.Dispatch<React.SetStateAction<TEvents | undefined>> 
 
-export interface INewEventContext {
-  newEvent: TEvents;
-  setNewEvent: React.Dispatch<React.SetStateAction<TEvents>>;
 }
 
 export interface IUser {
@@ -36,4 +37,12 @@ export interface IUsers {
   users: TUsers;
   setUsers: React.Dispatch<React.SetStateAction<TUsers | undefined>>;
 }
+
+export interface ICoordinates {
+  lat: number;
+  lon: number
+}
+
+
+
 

@@ -1,4 +1,3 @@
-import { yupToFormErrors } from "formik";
 import * as yup from "yup";
 export const schemaEvent = yup.object({
     title: yup
@@ -11,16 +10,6 @@ export const schemaEvent = yup.object({
     .min(3, "enter min 3 character")
     .required(),
 
-    // privacy: yup
-    // .string()
-    // .min(3, "enter min 3 character")
-    // .required(),
-
-    // medium: yup
-    // .string()
-    // .min(1, "enter min 3 character")
-    // .required(),
-
     startDate: yup
     .string()
     .min(1, "choose Date&Time")
@@ -30,15 +19,6 @@ export const schemaEvent = yup.object({
     .string()
     .min(1, "choose Date&Time")
     .required(),
-
-    // duration: yup
-    // .number()
-    // .typeError("can't be empty, enter only number")
-    // .required(),
-
-    // language: yup
-    // .string()
-    // .min(3, "can't be empty"),
 
     maxParticipants: yup
     .number()

@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import { Context } from '../Context/PageProvider';
 
 
 const MapComponent: React.FC = () => {
-    const latitule: number = 41.713182;
-    const longtitude: number = 44.781479;
-  const position: [number, number] = [latitule, longtitude]; 
+  const {coordinates} = Context()
+  const [mapPosition, setMapPosition] = useState<[number, number]>([0, 0]);
+  
+    const lat: number = coordinates?.lat ?? 0
+    const lon: number = coordinates?.lon ?? 0
+  const position: [number, number] = [lat, lon]; 
+  console.log(position)
+
+  useEffect(() => {
+    if (coordinates) {
+      setMapPosition([coordinates.lat, coordinates.lon]);
+    }
+  }, [coordinates]);
+  console.log(mapPosition)
 
   return (
-    <MapContainer center={position} zoom={50} style={{ height: "200px", width: "100%" }}>
+    <MapContainer center={mapPosition} zoom={5} style={{ height: "200px", width: "100%" }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
-      <Marker position={position}>
+      
+      <Marker position={mapPosition}>
+        <Popup>
+          This is your location!
+        </Popup>
       </Marker>
-    </MapContainer>
+      </MapContainer>
   );
 };
 

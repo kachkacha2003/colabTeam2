@@ -1,39 +1,27 @@
-import React, { ReactNode, useState } from "react";
+import{ ReactNode, useState } from "react";
 import styled from "styled-components";
-import data from "../../data.json"
 import { useNavigate } from "react-router-dom";
-import { SubmitHandler, useForm } from "react-hook-form";
+import {SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaEvent } from "../../schema/createEvent";
-import { INewEvents} from "../../types/Events";
+import axios from 'axios';
+import MapComponent from "../../intro/MapComponent";
+import { Context } from "../../Context/PageProvider";
+import { IEvent, INewEvent } from "../../types/Events";
 
 export default function Create(){
   const navigate = useNavigate();
-  const cateroriesArray = data.data[0].categories;
-  const [newEvent, setnewEvent] = useState({
-    id: 0,
-    title: "",
-    description: "",
-    privacy: "",
-    medium: "",
-    startDate: "",
-    endDate: "",
-    duration: 0,
-    language: "",
-    maxParticipants: 0,
-    category: "",
-    terms: "",
-    LocationName: "",
-    latitude: 0,
-    longtude: 0,
-    acceptingRSVPs: "",
-    UploadImage: ""
-  })
+  const {setCoordinates} = Context()
+  const cateroriesArray = ["Music", "Game", "Sport", "Arts", "Film", "Literature", "Technology", "Culture", "Lifestyle", "Charity", "Fashion", "Kids", "Other"]
+;
+  const {newEvent, setNewEvent} = Context()
 
   const [privacy, setPrivacy] = useState<string>("")
   const [medium, setMedium] = useState<string>("")
   const [acceptingRSVPs, setAcceptingRSVPs] = useState<string>("")
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [address, setAddress] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
 
   const choosePrivacy = (item: string)=>{
     setPrivacy(item)
@@ -51,17 +39,45 @@ export default function Create(){
     handleSubmit,
     formState: {errors},
   } = useForm({ resolver: yupResolver(schemaEvent)})
-  // const inputEventData: SubmitHandler<INewEvents> = (data) =>console.log(data)
 
   const handleChange = (event: any) => {
     event.preventDefault();
     const { name, value } = event.target;
-    setnewEvent((prew) => ({
+    setNewEvent((prew: any) => ({
       ...prew,
       [name]: value,
     }))
   }
   
+ console.log(newEvent);
+
+  
+  
+
+  const handleGeocode = async () => {
+    try {
+      const response = await axios.get('https://nominatim.openstreetmap.org/search', {
+        params: {
+          q: address,
+          format: 'json',
+          addressdetails: 1,
+        },
+      });
+
+      const results = response.data;
+      if (results.length > 0) {
+        const { lat, lon } = results[0];
+        setCoordinates({ lat: parseFloat(lat), lon: parseFloat(lon) });
+        setError(null);
+      } else {
+        setError('No results found');
+      }
+    } catch (err) {
+      setError('Error fetching data');
+    }
+  };
+  
+
     return(
         <Cont>
         <CreateEvent>
@@ -74,13 +90,14 @@ export default function Create(){
           <h1>Create Event</h1>
         </CreateEvent>
         
-        <InputField onSubmit={handleSubmit(handleChange)}>
+        <InputField  onSubmit={handleSubmit(handleChange)}>
           <Couple>
             <label htmlFor="title">Title <span>*</span></label>
             <input
             type="text"
             {...register("title")}
           />
+          
             {errors.title && 
               <ErrorMessage>
               {errors.title.message}
@@ -179,7 +196,7 @@ export default function Create(){
           <Couple>
             <label htmlFor="">Category<span>*</span></label>
             <div className="chooseButton" style={{flexWrap: "wrap"}}>
-            {cateroriesArray.map((item, index) =>(
+            {cateroriesArray?.map((item, index) =>(
               <div key ={index}>
               <p onClick={()=>{setSelectedIndex(index+1)}}
               style={selectedIndex === index+1 ? {backgroundColor: "#63b6bd"} : {backgroundColor: "#fff"}}
@@ -202,45 +219,25 @@ export default function Create(){
               </ErrorMessage>
             ) : null}
           </Couple>
+          <div>
           <Couple>
             <label htmlFor="">Location Name<span>*</span></label>
             <input 
             type="text" 
             className="fix"
-            {...register("LocationName")}
+            value={address} 
+            onChange={(e) => setAddress(e.target.value)}
             />
-            {errors.LocationName ? (
+            {/* {errors.LocationName ? (
               <ErrorMessage>
                 {errors?.LocationName?.message as ReactNode}
               </ErrorMessage>
-            ) : null}
+            ) : null} */}
+             <button onClick={handleGeocode}>Get Coordinates</button>
           </Couple>
-          <Couple>
-            <label htmlFor="">Latitede<span>*</span></label>
-            <input 
-            type="text" 
-            className="fix"
-            {...register("latitude")}
-            />
-            {errors.latitude ? (
-              <ErrorMessage>
-                {errors?.latitude?.message as ReactNode}
-              </ErrorMessage>
-            ) : null}
-          </Couple>
-          <Couple>
-            <label htmlFor="">Longitude<span>*</span></label>
-            <input 
-            type="text" 
-            className="fix"
-            {...register("longtude")}
-            />
-            {errors.longtude ? (
-              <ErrorMessage>
-                {errors?.longtude?.message as ReactNode}
-              </ErrorMessage>
-            ) : null}
-          </Couple>
+          <MapComponent/>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          </div>
           <Couple>
             <label htmlFor="">Accepting RSVPs<span>*</span></label>
             <div  className="chooseButton">
@@ -260,6 +257,8 @@ export default function Create(){
             />
           </Couple>
           <button 
+          // onSubmit={handleSubmit(inputEventData)}
+          // onClick={inputEventData}
           type = "submit"
           className="createButton"
           >Create Event</button>
@@ -367,4 +366,8 @@ const ErrorButtonMessage = styled.h4`
 `
 
 
+
+function setCoordinates(_coordinates: { lat: number; lng: number; }) {
+  throw new Error("Function not implemented.");
+}
  

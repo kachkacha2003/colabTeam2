@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Context } from '../Context/PageProvider';
 
 const App: React.FC = () => {
   const [address, setAddress] = useState<string>('');
-  const [coordinates, setCoordinates] = useState<{ lat: number; lng: number } | null>(null);
+  const {coordinates, setCoordinates} = Context()
   const [error, setError] = useState<string | null>(null);
-
+console.log(coordinates?.lat)
+console.log(coordinates?.lon)
   const handleGeocode = async () => {
     try {
       const response = await axios.get('https://nominatim.openstreetmap.org/search', {
@@ -19,7 +21,7 @@ const App: React.FC = () => {
       const results = response.data;
       if (results.length > 0) {
         const { lat, lon } = results[0];
-        setCoordinates({ lat: parseFloat(lat), lng: parseFloat(lon) });
+        setCoordinates({ lat: parseFloat(lat), lon: parseFloat(lon) });
         setError(null);
       } else {
         setError('No results found');
@@ -43,7 +45,7 @@ const App: React.FC = () => {
         <div>
           <h2>Coordinates:</h2>
           <p>Latitude: {coordinates.lat}</p>
-          <p>Longitude: {coordinates.lng}</p>
+          <p>Longitude: {coordinates.lon}</p>
         </div>
       )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
