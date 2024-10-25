@@ -1,13 +1,12 @@
 import{ ReactNode, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaEvent } from "../../schema/createEvent";
 import axios from 'axios';
 import MapComponent from "../../intro/MapComponent";
 import { Context } from "../../Context/PageProvider";
-import { IEvent, INewEvent } from "../../types/Events";
 
 export default function Create(){
   const navigate = useNavigate();
@@ -228,11 +227,6 @@ export default function Create(){
             value={address} 
             onChange={(e) => setAddress(e.target.value)}
             />
-            {/* {errors.LocationName ? (
-              <ErrorMessage>
-                {errors?.LocationName?.message as ReactNode}
-              </ErrorMessage>
-            ) : null} */}
              <button onClick={handleGeocode}>Get Coordinates</button>
           </Couple>
           <MapComponent/>
@@ -365,9 +359,4 @@ const ErrorButtonMessage = styled.h4`
     margin-top: 1px;
 `
 
-
-
-function setCoordinates(_coordinates: { lat: number; lng: number; }) {
-  throw new Error("Function not implemented.");
-}
  

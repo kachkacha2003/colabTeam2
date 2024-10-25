@@ -1,4 +1,3 @@
-import React from "react";
 import EventHubLogo from "/image/EventHubLogo.svg"
 import styled from "styled-components";
 
